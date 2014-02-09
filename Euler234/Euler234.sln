@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Euler234", "Euler234.vcproj", "{CEF33AB9-3BE9-4C19-8AA1-73FD4337FADA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEF33AB9-3BE9-4C19-8AA1-73FD4337FADA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CEF33AB9-3BE9-4C19-8AA1-73FD4337FADA}.Debug|Win32.Build.0 = Debug|Win32
+		{CEF33AB9-3BE9-4C19-8AA1-73FD4337FADA}.Release|Win32.ActiveCfg = Release|Win32
+		{CEF33AB9-3BE9-4C19-8AA1-73FD4337FADA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
