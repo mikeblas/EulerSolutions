@@ -292,8 +292,10 @@ public:
 			sum.bDigits[nMax] = carry;
 		}
 
-		if ( sum.nMaxLength <= sum.nLength )
-			DebugBreak();
+		if (sum.nMaxLength <= sum.nLength) {
+			printf("Max length exceeded %d\n", sum.nMaxLength);
+			exit(1);
+		}
 	}
 
 	static void multiply( CFibo &product, CFibo &factor, byte b )
@@ -569,62 +571,8 @@ void Problem16()
 	printf("%dn", nSum );
 }
 
-
-
-class TriangleTree{
-public:
-
-	TriangleTree( const char *pstr )
-	{
-		nElements = 0;
-		for ( const char *pstrWalker = pstr; ; pstrWalker++)
-		{
-			if ( *pstrWalker == ' ' )
-				nElements++;
-			else if ( *pstrWalker == 0 )
-			{
-				nElements++;
-				break;
-			}
-		}
-
-
-	}
-
-	int nLevels;
-	int nElements;
-
-};
-
-class TreeNode {
-public:
-	int nValue;
-	TreeNode *pLeft;
-	TreeNode *pRight;
-};
-
 #define ELEMENTS(x) (sizeof(x) / sizeof(x[0]) )
 
-void Problem18()
-{
-	const char sz[] = 
-		"75 "
-		"95 64 "
-		"17 47 82 "
-		"18 35 87 10 "
-		"20 04 82 47 65 "
-		"19 01 23 75 03 34 "
-		"88 02 77 73 07 63 67 "
-		"99 65 04 28 06 16 70 92 "
-		"41 41 26 56 83 40 80 70 33 "
-		"41 48 72 33 47 32 37 16 94 29 "
-		"53 71 44 65 25 43 91 52 97 51 14 "
-		"70 11 33 28 77 73 17 78 39 68 17 57 "
-		"91 71 52 38 17 14 91 43 58 50 27 29 48 "
-		"63 66 04 68 89 53 67 30 73 16 69 87 40 31 "
-		"04 62 98 27 23 09 70 98 73 93 38 53 60 04 23";
-
-}
 
 void Problem145()
 {
@@ -704,7 +652,7 @@ void Problem31()
 
 bool pandigital( byte *b )
 {
-	bool bits[9] = { false, false, false, false, false, false, false, false, false };
+	bool bits[9] = { false };
 
 	for ( int n = 0; n < 9; n++ )
 	{
@@ -731,9 +679,9 @@ void Problem104()
 	f2.set(1);
 	int nTerm = 1;
 
-	while ( 1 )
+	while (1)
 	{
-		CFibo1M::add( *p3, *p1, *p2 );
+		CFibo1M::add(*p3, *p1, *p2);
 		CFibo1M *pTemp = p1;
 		p1 = p2;
 		p2 = p3;
@@ -741,7 +689,7 @@ void Problem104()
 		nTerm++;
 
 		// number is in p1
-		if ( p1->nLength < 9 )
+		if (p1->nLength < 9)
 			continue;
 		/*
 		if ( nTerm == 2749 )
@@ -750,13 +698,21 @@ void Problem104()
 		if ( nTerm == 541 )
 			printf("!\n");
 		*/
-		if ( nTerm == 329468 )
+		if (nTerm == 329468)
 			printf("!\n");
 
-		if ( !pandigital( p1->bDigits ) )
-			continue;
+		bool last = pandigital(p1->bDigits);
+		bool first = pandigital(p1->bDigits + p1->nLength - 9);
 
-		if ( pandigital( p1->bDigits + p1->nLength - 9 ) )
+		if (last) {
+			printf("last pandigital at %d (length is %d)\n", nTerm, p1->nLength);
+		}
+		if (first) {
+			printf("first pandigital at %d (length is %d)\n", nTerm, p1->nLength);
+		}
+
+
+		if ( first && last )
 		{
 			printf( "answer = %d\n", nTerm );
 			break;
@@ -1151,7 +1107,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	// Problem145();
 
 	// Problem31();
-	// Problem104();
+	Problem104();
 	// Problem34();
 
 	// Problem21();
@@ -1163,7 +1119,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	// Problem35();
 
-	Problem37();
+	// Problem37();
 
 	}
 
