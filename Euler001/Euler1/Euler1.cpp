@@ -3,237 +3,9 @@
 
 #include "stdafx.h"
 
-void Problem7()
-{
-	int candidate = 3;
-	int primeCount = 1;
 
 
-	while ( primeCount < 10001 )
-	{
-		bool isPrime = true;
 
-		for ( int nDivisor = 2; nDivisor < candidate / 2; nDivisor++ )
-		{
-			if ( candidate % nDivisor == 0 )
-			{
-				isPrime = false;
-				break;
-			}
-		}
-
-		if ( isPrime )
-		{
-			primeCount++;
-			printf( "%d, %d\n", primeCount, candidate );
-		}
-
-		candidate += 2;
-	}
-}
-
-void Problem10()
-{
-	__int64 sum = 2;
-	int candidate = 3;
-
-
-	while ( 1 )
-	{
-		bool isPrime = true;
-
-		for ( int nDivisor = 2; nDivisor < candidate / 2; nDivisor++ )
-		{
-			if ( candidate % nDivisor == 0 )
-			{
-				isPrime = false;
-				break;
-			}
-		}
-
-		if ( isPrime )
-		{
-			if ( candidate >= 2000000 )
-				break;
-			sum += candidate;
-		}
-
-		candidate += 2;
-	}
-
-	printf("%lld\n", sum);
-}
-
-
-void Problem5()
-{
-	int candidate = 20;
-	for ( bool satisfied = false; !satisfied; candidate += 2 )
-	{
-		satisfied = true;
-		for ( int n = 2; n <= 20; n++ )
-		{
-			if ( candidate % n != 0 )
-			{
-				satisfied = false;
-				break;
-			}
-		}
-
-		if ( satisfied )
-			printf("%d\n", candidate );
-	}
-
-}
-
-void Problem8()
-{
-	char s[] = 
-		"73167176531330624919225119674426574742355349194934"
-	"96983520312774506326239578318016984801869478851843"
-	"85861560789112949495459501737958331952853208805511"
-	"12540698747158523863050715693290963295227443043557"
-	"66896648950445244523161731856403098711121722383113"
-	"62229893423380308135336276614282806444486645238749"
-	"30358907296290491560440772390713810515859307960866"
-	"70172427121883998797908792274921901699720888093776"
-	"65727333001053367881220235421809751254540594752243"
-	"52584907711670556013604839586446706324415722155397"
-	"53697817977846174064955149290862569321978468622482"
-	"83972241375657056057490261407972968652414535100474"
-	"82166370484403199890008895243450658541227588666881"
-	"16427171479924442928230863465674813919123162824586"
-	"17866458359124566529476545682848912883142607690042"
-	"24219022671055626321111109370544217506941658960408"
-	"07198403850962455444362981230987879927244284909188"
-	"84580156166097919133875499200524063689912560717606"
-	"05886116467109405077541002256983155200055935729725"
-	"71636269561882670428252483600823257530420752963450";
-
-	int maxproduct = 0;
-	for ( size_t n = 0; n < strlen(s) - 5; n++ )
-	{
-		int nDigit1 = s[n + 0] - '0';
-		int nDigit2 = s[n + 1] - '0';
-		int nDigit3 = s[n + 2] - '0';
-		int nDigit4 = s[n + 3] - '0';
-		int nDigit5 = s[n + 4] - '0';
-
-		if ( nDigit5 == 0 )
-		{
-			n += 5;
-			continue;
-		}
-
-		int product = nDigit1 * nDigit2 * nDigit3 * nDigit4 * nDigit5;
-		if ( product > maxproduct )
-			maxproduct = product;
-	}
-
-	printf("%d\n", maxproduct);
-
-}
-
-void Problem6()
-{
-	int sum = 0;
-	int squares = 0;
-
-	for ( int n = 1; n <= 100; n++ )
-	{
-		sum += n;
-		squares += (n * n);
-	}
-
-	printf("square of sums = %d\n", sum * sum);
-	printf("Sum of squares = %d\n", squares );
-	printf("diff = %d\n", (sum * sum) - squares);
-}
-
-void Problem11()
-{
-	char sz[] = 
-	"08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08 "
-	"49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00 "
-	"81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65 "
-	"52 70 95 23 04 60 11 42 69 24 68 56 01 32 56 71 37 02 36 91 "
-	"22 31 16 71 51 67 63 89 41 92 36 54 22 40 40 28 66 33 13 80 "
-	"24 47 32 60 99 03 45 02 44 75 33 53 78 36 84 20 35 17 12 50 "
-	"32 98 81 28 64 23 67 10 26 38 40 67 59 54 70 66 18 38 64 70 "
-	"67 26 20 68 02 62 12 20 95 63 94 39 63 08 40 91 66 49 94 21 "
-	"24 55 58 05 66 73 99 26 97 17 78 78 96 83 14 88 34 89 63 72 "
-	"21 36 23 09 75 00 76 44 20 45 35 14 00 61 33 97 34 31 33 95 "
-	"78 17 53 28 22 75 31 67 15 94 03 80 04 62 16 14 09 53 56 92 "
-	"16 39 05 42 96 35 31 47 55 58 88 24 00 17 54 24 36 29 85 57 "
-	"86 56 00 48 35 71 89 07 05 44 44 37 44 60 21 58 51 54 17 58 "
-	"19 80 81 68 05 94 47 69 28 73 92 13 86 52 17 77 04 89 55 40 "
-	"04 52 08 83 97 35 99 16 07 97 57 32 16 26 26 79 33 27 98 66 "
-	"88 36 68 87 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69 "
-	"04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36 "
-	"20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16 "
-	"20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54 "
-	"01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48 ";
-
-	int n[20][20];
-
-	{
-		int nRow = 0;
-		int nCol = 0;
-		for ( size_t x = 0; x < strlen(sz); x += 3 )
-		{
-			int temp = atoi(&sz[x]);
-			n[nRow][nCol] = temp;
-			nCol += 1;
-			if ( nCol == 20 ) { nCol = 0; nRow++;  }
-		}
-	}
-
-	int maxproduct = 0;
-
-	for ( int nRow = 0; nRow < 20; nRow++ )
-	{
-		for ( int nCol = 0; nCol < 17; nCol++ )
-		{
-			int nProduct = n[nRow][nCol+0] * n[nRow][nCol+1] * n[nRow][nCol+2] * n[nRow][nCol+3];
-			if ( maxproduct < nProduct )
-				maxproduct = nProduct;
-		}
-	}
-
-	for ( int nRow = 0; nRow < 17; nRow++ )
-	{
-		for ( int nCol = 0; nCol < 20; nCol++ )
-		{
-			int nProduct = n[nRow+0][nCol] * n[nRow+1][nCol] * n[nRow+2][nCol] * n[nRow+3][nCol];
-			if ( maxproduct < nProduct )
-				maxproduct = nProduct;
-		}
-	}
-
-	for ( int nRow = 0; nRow < 17; nRow++ )
-	{
-		for ( int nCol = 0; nCol < 17; nCol++ )
-		{
-			int nProduct = n[nRow+0][nCol+0] * n[nRow+1][nCol+1] * n[nRow+2][nCol+2] * n[nRow+3][nCol+3];
-			if ( maxproduct < nProduct )
-				maxproduct = nProduct;
-		}
-	}
-
-	for ( int nRow = 0; nRow < 17; nRow++ )
-	{
-		for ( int nCol = 4; nCol < 20; nCol++ )
-		{
-			int nProduct = n[nRow+0][nCol-0] * n[nRow+1][nCol-1] * n[nRow+2][nCol-2] * n[nRow+3][nCol-3] ;
-			if ( maxproduct < nProduct )
-				maxproduct = nProduct;
-		}
-	}
-
-	printf("%d\n", maxproduct);
-
-
-}
 
 typedef unsigned char byte;
 
@@ -244,6 +16,7 @@ public:
 	int nLength;
 	int nMaxLength;
 	byte* bDigits;
+
 
 	CFibo()
 	{
@@ -394,45 +167,6 @@ void Problem25()
 }
 
 
-bool isPalindrome( const char *pstr )
-{
-	const char *pstrFirst = pstr;
-	const char *pstrLast = pstr;
-	while ( pstrLast[1] != 0 )
-		pstrLast++;
-
-	while ( pstrFirst <= pstrLast )
-	{
-		if ( *pstrFirst != *pstrLast )
-			return false;
-		pstrFirst++;
-		pstrLast--;
-	}
-
-	return true;
-}
-
-
-void Problem4()
-{
-	char sz[100];
-	int nLargest = 0;
-
-	for ( int k = 100; k <= 999; k++ )
-	{
-		for ( int j = 100; j <= 999; j++ )
-		{
-			_itoa( k*j, sz, 10 );
-			if ( isPalindrome( sz ) )
-			{
-				if (nLargest < k*j)
-					nLargest = k*j;
-			}
-		}
-	}
-
-	printf("%d\n", nLargest);
-}
 
 void Problem9()
 {
@@ -554,66 +288,10 @@ void Problem14()
 }
 
 
-void Problem16()
-{
-	const char sz[] = "1071508607186267320948425049060001810561404811705533607443750388370351"
-"0511249361224931983788156958581275946729175531468251871452856923140435"
-"9845775746985748039345677748242309854210746050623711418779541821530464"
-"7498358194126739876755916554394607706291457119647768654216766042983165"
-"2624386837205668069376";
 
-	int nSum = 0;
-	for ( const char *pstr = sz; *pstr != 0; pstr++ )
-	{
-		nSum += ( *pstr - '0' );
-	}
-
-	printf("%dn", nSum );
-}
 
 #define ELEMENTS(x) (sizeof(x) / sizeof(x[0]) )
 
-
-void Problem145()
-{
-	int nFound = 0;
-
-	for ( int n = 1; n < 1000000000; n++ )
-	{
-		// if it ends in 0, it's not reversible
-		if ( n % 10  == 0 )
-			continue;
-
-		// reverse it
-		char sz[100];
-		_itoa( n, sz, 10 );
-		_strrev( sz );
-		int r = atoi(sz);
-
-		char szSum[100];
-		_itoa( n + r, szSum, 10 );
-
-		bool bReversible = true;
-		for ( char *pstr = szSum; *pstr != 0; pstr++ )
-		{
-			if ( (*pstr & 1) == 0 )
-			{
-				bReversible = false;
-				break;
-			}
-		}
-
-		if ( bReversible )
-		{
-			++nFound;
-			printf("%d: %d\n", nFound, n );
-		}
-	}
-
-	printf("%d\n", nFound);
-
-	return;
-}
 
 
 void Problem31()
