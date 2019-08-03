@@ -168,25 +168,6 @@ void Problem25()
 
 
 
-void Problem9()
-{
-	for ( int a = 1; a <= 1000; a++ )
-	{
-		int aSquared = a*a;
-		for ( int b = 1; b <= 1000; b++ )
-		{
-			int c = 1000 - a -b;
-			if ( b*b + aSquared == c*c )
-			{
-				printf( "%d\n", a*b*c);
-				break;
-			}
-		}
-	}
-	
-	return;
-}
-
 void Problem20()
 {
 	CFibo2K f1; CFibo2K f2; CFibo2K f3;
@@ -214,77 +195,6 @@ void Problem20()
 	}
 
 	printf("%d\n", nSum );
-}
-
-void Problem12()
-{
-	bool found = false;
-	int candidate = 7;
-	int tnumber = 28;
-
-	while ( !found )
-	{
-		/*
-		int tnumber = 0;
-		for ( int n = 1; n <= candidate; n++ )
-		{
-			tnumber += n;
-		}
-		*/
-
-		// itself and one, plus ...
-		int divisors = 2;
-		for ( int n = 2; n <= tnumber/2; n++ )
-		{
-			if ( tnumber % n == 0 )
-				divisors += 1;
-		}
-
-		printf("%d: %d\n", candidate, divisors );
-
-		if ( divisors > 500 )
-		{
-			printf("Value is %d\n", tnumber);
-			found = true;
-		}
-
-		candidate++;
-		tnumber += candidate;
-	}
-}
-
-int collatzSteps( int n )
-{
-	int steps = 1;
-	__int64 worker = n;
-	while ( worker > 1 )
-	{
-		printf( "%d: %lld\n", steps, worker);
-		if ( worker%2 == 0 )
-			worker = worker / 2;
-		else
-			worker = (3*worker) + 1;
-		steps++;
-	}
-
-	return steps;
-}
-
-
-void Problem14()
-{
-	int longest = 0;
-	int which = 0;
-	for ( int n = 1; n < 1000000; n++ )
-	{
-		int steps = collatzSteps( n );
-		if ( steps > longest )
-		{
-			longest = steps;
-			which = n;
-			printf( "%d: %d\n", which, steps );
-		}
-	}
 }
 
 
@@ -432,69 +342,6 @@ void Problem34()
 }
 
 
-void Problem21()
-{
-	int nDivSum[10000];
-	int nFound = 0;
-	int nTotalSum = 0;
-
-	for ( int n = 1; n < 10000; n++ )
-	{
-		nDivSum[n] = 1;
-		for ( int d = 2; d < n; d++ )
-		{
-			if ( n % d == 0 ) nDivSum[n] += d;
-		}
-	}
-
-	for ( int n = 0; n < 10000; n++ )
-	{
-		if ( nDivSum[n] != 0 && nDivSum[n] > n && nDivSum[n] < 10000 )
-		{
-			if ( n == nDivSum[nDivSum[n]] )
-			{
-				printf( "%d, %d\n", n, nDivSum[n] );
-				nFound++;
-				nTotalSum += n;
-				nTotalSum += nDivSum[n];
-			}
-		}
-	}
-
-	printf("%d\n", nTotalSum);
-}
-
-
-long pow5( int n )
-{
-	return (long) n * (long) n * (long) n * (long) n * (long) n;
-}
-
-
-void Problem30()
-{
-	int nTotalSum = 0;
-
-	for ( int n = 2; n < 10000000; n++ )
-	{
-		char sz[100];
-		_itoa( n, sz, 10 );
-
-		int nPowSum = 0;
-		for ( char *pstr = sz; *pstr != 0; pstr++ )
-		{
-			nPowSum += pow5( *pstr - '0' );
-		}
-
-		if ( nPowSum == n )
-		{
-			printf("%d\n", n );
-			nTotalSum += n;
-		}
-	}
-
-	printf("%d\n", nTotalSum);
-}
 
 int Roll6()
 {
