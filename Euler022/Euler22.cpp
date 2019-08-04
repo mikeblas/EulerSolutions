@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
 
 	fclose(f);
 
-	printf("%d\n", names.size());
+	printf("%lld\n", names.size());
 
 	sort(names.begin(), names.end());
 
