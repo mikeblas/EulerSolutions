@@ -30,7 +30,7 @@ bool isPrime(__int64 candidate) {
 		return false;
 	}
 
-	__int64 limit = 1 + sqrt(candidate);
+	__int64 limit = static_cast<__int64>(1 + sqrt(candidate));
 
 	for (__int64 divisor = 3; divisor <= limit; divisor += 2) {
 		if (candidate % divisor == 0) {

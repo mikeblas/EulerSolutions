@@ -71,7 +71,7 @@ int main()
 	for (int power = 1; power < 25; power++) {
 		for (int base = 1; base < 100; base++) {
 
-			int digits = 1 + (power * log10(base));
+			int digits = static_cast<int>(1 + (power * log10(base)));
 			printf("%d ^ %d == %d digits\n", base, power, digits);
 			if (digits == power) {
 				count++;
