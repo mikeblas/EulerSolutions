@@ -60,7 +60,7 @@ public:
 		}
 	}
 
-	int size() const {
+	size_t size() const {
 		return v.size();
 	}
 
@@ -180,7 +180,7 @@ int main(int argc, char* argv[])
 		lines[n].print();
 	}
 	*/
-	printf("%d lines read\n", lines.size());
+	printf("%lld lines read\n", lines.size());
 
 	method2();
 
