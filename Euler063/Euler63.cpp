@@ -42,7 +42,7 @@ void method1() {
 
 			_ui64toa(power, sz, 10);
 
-			int len = strlen(sz);
+			size_t len = strlen(sz);
 
 			if (len == n) {
 				matches.insert(power);
@@ -59,7 +59,7 @@ void method1() {
 
 	}
 
-	printf("%d\n", matches.size());
+	printf("%lld\n", matches.size());
 	printf("count is %d\n", count);
 }
 
