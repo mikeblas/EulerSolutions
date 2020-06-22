@@ -204,40 +204,6 @@ void Problem20()
 
 
 
-void Problem31()
-{
-	int ways = 1;
-
-	for ( int p = 0; p <= 200; p++ )
-	{
-		for ( int t = 0; t <= 100; t++ )
-		{
-			printf("%d\n", ways);
-			for ( int n = 0; n <= 40; n++ )
-			{
-				for ( int d = 0; d <= 20; d++ )
-				{
-					for ( int dd = 0; dd <= 10; dd++ )
-					{
-						for ( int h = 0; h <= 4; h++ )
-						{
-							for ( int ps1 = 0; ps1 <= 2; ps1++ )
-							{
-								int total = p + t*2 + n*5 + d*10 + dd*20 + h*50 + ps1*100;
-								if ( total == 200 )
-									ways++;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	printf("%d\n", ways );
-}
-
-
 bool pandigital( byte *b )
 {
 	bool bits[9] = { false };
@@ -307,40 +273,6 @@ void Problem104()
 		}
 	}
 }
-
-void Problem34()
-{
-	int factorials[10] = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };
-
-	char sz[100];
-	int nFound = 0;
-
-	for ( int n = 0; n < 1000000000; n++ )
-	{
-		_itoa( n, sz, 10 );
-		bool bWorked = true;
-		int nSum = 0;
-
-		for ( char *pstr = sz; *pstr != 0; pstr++ )
-		{
-			nSum += factorials[ *pstr - '0' ];
-			if ( nSum > n )
-			{
-				bWorked = false;
-				break;
-			}
-		}
-
-		if ( bWorked && nSum == n )
-		{
-			nFound++;
-			printf("%d: %d\n", nFound, n );
-		}
-	}
-
-	printf("%d\n", nFound );
-}
-
 
 
 int Roll6()
